@@ -1,0 +1,13 @@
+pkg/
+log/
+junit/
+.vagrant/
+coverage/
+log/
+.*.sw[op]
+.DS_Store
+tmp/
+doc/
+.tmp/
+.vscode/
+*.log
