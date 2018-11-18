@@ -1,1 +1,1 @@
-# WorkShop: AWS ECS with CI / CD deployment. 
+# WorkShop: AWS ECS with CI / CD deployment 
