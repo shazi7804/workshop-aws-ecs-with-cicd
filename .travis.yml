@@ -13,7 +13,7 @@ script:
   - echo "not tests!"
 after_success:
   - docker --version  # document the version travis is using
-  - pip install --user awscli # install aws cli w/o sudo
+  - pip install awscli # install aws cli w/o sudo
   - export PATH=$PATH:$HOME/.local/bin # put aws in the path
   - eval $(aws ecr get-login --region ${REGION}) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
   - docker build -t build-image-final .
