@@ -5,7 +5,7 @@ env:
   global:
     - REGION='ap-northeast-1'
     - ECR_REPO='workshop-aws-ecs-with-cicd'
-    - ECR_IMAGE_TAG=$TRAVIS_BUILD_NUMBER
+    - ECR_IMAGE_TAG='alpha'
 install:
   - echo "install nothing!"
 script:
