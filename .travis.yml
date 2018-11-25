@@ -6,16 +6,22 @@ env:
     - REGION='ap-northeast-1'
     - ECR_REPO='workshop-aws-ecs-with-cicd'
     - ECR_IMAGE_TAG='alpha'
+    - ECS_CLUSTER_NAME='workshop-ecs'
+    - ECS_SERIVCE_NAME='workshop-ecs-service'
 install:
   - echo "install nothing!"
 script:
   - echo "not tests!"
 after_success:
   - echo "travis build version: $$TRAVIS_BUILD_NUMBER" > src/version.txt
-  - docker --version  # document the version travis is using
-  - pip install awscli # install aws cli w/o sudo
-  - export PATH=$PATH:$HOME/.local/bin # put aws in the path
-  - eval $(aws ecr get-login --no-include-email --region ${REGION}) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+  # - docker --version  # document the version travis is using
+  # - pip install awscli # install aws cli w/o sudo
+  # - export PATH=$PATH:$HOME/.local/bin # put aws in the path
+  # - eval $(aws ecr get-login --no-include-email --region ${REGION}) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
   - docker build -t build-image-final .
   - docker tag build-image-final:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_IMAGE_TAG}
   - docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_IMAGE_TAG}
+deploy:
+  provider: script
+  # specify the deployment script
+  script: bash scripts/deploy.sh
