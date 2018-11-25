@@ -23,4 +23,7 @@ docker tag demo/ecs-auto-deploy:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazo
 docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_IMAGE_TAG}
 
 # update an AWS ECS service with the new image
+
+echo "ecs-deploy -c $CLUSTER_NAME -n $SERVICE_NAME -i ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_IMAGE_TAG}"
+
 ecs-deploy -c $CLUSTER_NAME -n $SERVICE_NAME -i ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_IMAGE_TAG}
