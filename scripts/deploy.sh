@@ -24,6 +24,6 @@ docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_
 
 # update an AWS ECS service with the new image
 
-echo "ecs-deploy -c $ECS_CLUSTER_NAME -n $ECS_SERIVCE_NAMEgit a -i ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_IMAGE_TAG}"
+echo "ecs-deploy -c $ECS_CLUSTER_NAME -n $ECS_SERIVCE_NAME -i ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_IMAGE_TAG}"
 
-ecs-deploy -c $CLUSTER_NAME -n $SERVICE_NAME -i ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_IMAGE_TAG}
+ecs-deploy -c $ECS_CLUSTER_NAME -n $ECS_SERIVCE_NAME -i ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPO}:${ECR_IMAGE_TAG}
