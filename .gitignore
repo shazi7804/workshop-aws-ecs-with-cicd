@@ -11,3 +11,4 @@ doc/
 .tmp/
 .vscode/
 *.log
+src/version.txt
